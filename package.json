@@ -1,15 +1,13 @@
 {
-  "name": "jttx",
-  "version": "1.2.2",
+  "name": "jitty",
+  "version": "0.1.0",
   "type": "module",
-  "description": "Just-In-Time TypeScript Transpile Execution (JTTX): Run TypeScript ESM in Node.js CLI",
+  "description": "Just-In-Time TypeScript Transpile Execution: Run TypeScript ESM in Node.js CLI",
   "keywords": [
     "cli",
     "runtime",
     "node",
     "esm",
-    "swc",
-    "zero-config",
     "typescript",
     "typescript runner"
   ],
@@ -24,17 +22,16 @@
     "dist/"
   ],
   "scripts": {
-    "build": "rimraf dist && npx tsc"
+    "build": "rimraf dist && npx tsc && pnpm minify",
+    "minify": "terser dist/jitty.js -c -o dist/jitty.js"
   },
   "dependencies": {
-    "@swc/core": "^1.11.22"
+    "@swc/core": "^1.11.24"
   },
   "devDependencies": {
     "@types/node": "^22.13.17",
     "rimraf": "^6.0.1",
+    "terser": "^5.39.0",
     "typescript": "^5.8.2"
-  },
-  "peerDependencies": {
-    "@types/node": ">=22.13.11"
   }
 }

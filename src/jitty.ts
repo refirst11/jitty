@@ -172,7 +172,7 @@ function resolveImports(code: string, basePath: string, externalImportSet: Set<s
 
   return printSync(newAst).code;
 }
-async function jttx(filePath: string): Promise<string> {
+async function jitty(filePath: string): Promise<string> {
   const absoluteFilePath = resolve(filePath);
   if (!absoluteFilePath.startsWith(projectRoot + '/')) {
     throw new Error('Invalid path: must use absolute path within project: ' + projectRoot);
@@ -201,7 +201,7 @@ export const load: LoadHook = async (url, context, nextLoad) => {
     return nextLoad(url, context);
   }
 
-  const compiledCode = await jttx(filePath);
+  const compiledCode = await jitty(filePath);
 
   return {
     format: 'module',
